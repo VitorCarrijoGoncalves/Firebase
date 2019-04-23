@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_gravity="center"
+    tools:context=".CadastroUsuario">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CADASTRO DE USUÁRIO"
+        android:textAlignment="center"
+        android:textSize="25sp"/>
+
+    <EditText
+        android:id="@+id/edtCadEmail"
+        android:layout_width="match_parent"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtCadSenha1"
+        android:layout_width="match_parent"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtCadSenha2"
+        android:layout_width="match_parent"
+        android:hint="Repita a senha"
+        android:inputType="textPassword"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtCadNome"
+        android:layout_width="match_parent"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CADASTRAR"/>
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CANCELAR"/>
+
+</LinearLayout>
