@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import senai.mobile.com.br.firebase.Classes.Usuario;
 import senai.mobile.com.br.firebase.DAO.ConfiguracaoFirebase;
@@ -35,25 +36,34 @@ public class MainActivity extends AppCompatActivity {
         edtSenhaLogin = (EditText) findViewById(R.id.edtESenha);
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (usuarioLogado()) {
 
-                if (!edtEmailLogin.getText().toString().equalsIgnoreCase("") && !edtSenhaLogin.getText().toString().equalsIgnoreCase("")) {
+            Intent minhaConta = new Intent(MainActivity.this, CadastroUsuario.class);
+            abrirNovaActivity(minhaConta);
 
-                    usuario = new Usuario();
+        } else {
 
-                    usuario.setEmail(edtEmailLogin.getText().toString());
-                    usuario.setSenha(edtSenhaLogin.getText().toString());
+            btnLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                    validarLogin();
+                    if (!edtEmailLogin.getText().toString().equalsIgnoreCase("") && !edtSenhaLogin.getText().toString().equalsIgnoreCase("")) {
 
-                } else {
-                    Toast.makeText(MainActivity.this, "Preencha os campos de E-mail e Senha", Toast.LENGTH_LONG).show();
+                        usuario = new Usuario();
+
+                        usuario.setEmail(edtEmailLogin.getText().toString());
+                        usuario.setSenha(edtSenhaLogin.getText().toString());
+
+                        validarLogin();
+
+                    } else {
+                        Toast.makeText(MainActivity.this, "Preencha os campos de E-mail e Senha", Toast.LENGTH_LONG).show();
+                    }
+
                 }
+            });
 
-            }
-        });
+        }
 
     }
 
@@ -74,6 +84,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void abrirTelaAdministrador() {
         Intent intent = new Intent(MainActivity.this, CadastroUsuario.class);
+        startActivity(intent);
+    }
+
+    public Boolean usuarioLogado() {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            return true;
+
+        } else {
+            return false;
+        }
+
+    }
+
+    public void abrirNovaActivity(Intent intent) {
         startActivity(intent);
     }
 
