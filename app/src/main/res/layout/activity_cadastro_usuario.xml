@@ -10,7 +10,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:layout_gravity="center"
-    tools:context=".CadastroUsuario">
+    tools:context=".CadastroUsuarioActivity">
 
     <TextView
         android:layout_width="match_parent"

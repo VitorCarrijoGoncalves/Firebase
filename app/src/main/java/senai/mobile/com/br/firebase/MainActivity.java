@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (usuarioLogado()) {
 
-            Intent minhaConta = new Intent(MainActivity.this, CadastroUsuario.class);
+            Intent minhaConta = new Intent(MainActivity.this, CadastroUsuarioActivity.class);
             abrirNovaActivity(minhaConta);
 
         } else {
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void abrirTelaAdministrador() {
-        Intent intent = new Intent(MainActivity.this, CadastroUsuario.class);
+        Intent intent = new Intent(MainActivity.this, CadastroUsuarioActivity.class);
         startActivity(intent);
     }
 

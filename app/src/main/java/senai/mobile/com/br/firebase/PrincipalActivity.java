@@ -34,7 +34,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
         if (id == R.id.action_add_usuario) {
             abrirTelaCadastroUsuario();
-        } else if (R.id.action_sair_admin) {
+        } else if (id == R.id.action_sair_admin) {
             deslogarUsuario();
         }
 
@@ -42,7 +42,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
     }
     private void abrirTelaCadastroUsuario() {
-        Intent intent = new Intent(PrincipalActivity.this, CadastroUsuario.class);
+        Intent intent = new Intent(PrincipalActivity.this, CadastroUsuarioActivity.class);
         startActivity(intent);
     }
 

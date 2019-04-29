@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastroUsuario" />
+        <activity android:name=".CadastroUsuarioActivity" />
     </application>
 
 </manifest>
