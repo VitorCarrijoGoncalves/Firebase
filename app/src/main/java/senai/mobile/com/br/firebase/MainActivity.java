@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (usuarioLogado()) {
 
-            Intent minhaConta = new Intent(MainActivity.this, CadastroUsuarioActivity.class);
+            Intent minhaConta = new Intent(MainActivity.this, PrincipalActivity.class);
             abrirNovaActivity(minhaConta);
 
         } else {

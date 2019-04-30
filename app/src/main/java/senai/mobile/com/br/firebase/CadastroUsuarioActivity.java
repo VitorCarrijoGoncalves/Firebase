@@ -43,11 +43,13 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usuario);
 
+        nome = (EditText) findViewById(R.id.edtCadNome);
         email = (EditText) findViewById(R.id.edtCadEmail);
         senha1 = (EditText) findViewById(R.id.edtCadSenha1);
         senha2 = (EditText) findViewById(R.id.edtCadSenha2);
         rbAdmin = (RadioButton) findViewById(R.id.rbAdmin);
         rbAtend = (RadioButton) findViewById(R.id.rbAtend);
+        btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
         btnCancelar = (Button) findViewById(R.id.btnCancelar);
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +133,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
         try {
 
-            reference = ConfiguracaoFirebase.getFirebase().child("Usuarios");
+            reference = ConfiguracaoFirebase.getFirebase().child("usuarios");
             reference.push().setValue(usuario);
             Toast.makeText(CadastroUsuarioActivity.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
             return true;
