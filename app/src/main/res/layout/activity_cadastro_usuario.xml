@@ -23,7 +23,8 @@
         android:id="@+id/edtCadEmail"
         android:layout_width="match_parent"
         android:hint="E-mail"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="textWebEmailAddress"/>
 
     <EditText
         android:id="@+id/edtCadSenha1"

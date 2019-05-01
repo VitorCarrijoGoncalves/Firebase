@@ -60,9 +60,9 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
                     usuario = new Usuario();
 
-                    usuario.setEmail(email.getText().toString());
-                    usuario.setSenha(senha1.getText().toString());
-                    usuario.setNome(nome.getText().toString());
+                    usuario.setEmail(email.getText().toString().trim());
+                    usuario.setSenha(senha1.getText().toString().trim());
+                    usuario.setNome(nome.getText().toString().trim());
 
                     if (rbAdmin.isChecked()) {
                         usuario.setTipoUsuario("Administrador");
@@ -85,7 +85,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     private void cadastrarUsuario() {
 
         autenticacao = ConfiguracaoFirebase.getFirebaseAuth();
-        autenticacao.createUserWithEmailAndPassword(usuario.getSenha(), usuario.getEmail()).addOnCompleteListener(CadastroUsuarioActivity.this, new OnCompleteListener<AuthResult>() {
+        autenticacao.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()).addOnCompleteListener(CadastroUsuarioActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -108,6 +108,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     } catch (FirebaseAuthInvalidCredentialsException e) {
 
                         erroExcecao = "O e-mail digitado é inválido, digite um novo e-mail";
+                        e.printStackTrace();
 
                     } catch (FirebaseAuthUserCollisionException e) {
 
