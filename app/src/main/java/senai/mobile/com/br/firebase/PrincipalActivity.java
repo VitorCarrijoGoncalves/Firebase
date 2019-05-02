@@ -24,6 +24,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private TextView tipoUsuario;
     private Usuario usuario;
     private String tipoUsuarioEmail;
+    private Menu menu1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,17 @@ public class PrincipalActivity extends AppCompatActivity {
 
         tipoUsuario = (TextView) findViewById(R.id.txtTipoUsuario);
         autenticacao = FirebaseAuth.getInstance();
+
+        referenciaFirebase = FirebaseDatabase.getInstance().getReference();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        menu.clear();
+
+        this.menu1 = menu;
 
         // recebendo o e-mail do usuário logado no momento
         String email = autenticacao.getCurrentUser().getEmail().toString();
@@ -45,6 +57,17 @@ public class PrincipalActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapchot : dataSnapshot.getChildren()) {
                     tipoUsuarioEmail = postSnapchot.child("tipoUsuario").getValue().toString();
                     // A variável acima recebe o tipo de usuario que é deste e-mail em específico
+
+                    tipoUsuario.setText(tipoUsuarioEmail);
+
+                    menu1.clear();
+
+                    if (tipoUsuarioEmail.equals("Administrador")) {
+                        getMenuInflater().inflate(R.menu.menu_admin, menu1);
+                    } else if (tipoUsuarioEmail.equals("Atendente")) {
+                        getMenuInflater().inflate(R.menu.menu_atend, menu1);
+                    }
+
                 }
 
             }
@@ -55,11 +78,7 @@ public class PrincipalActivity extends AppCompatActivity {
             }
         });
 
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_admin, menu);
         return true;
     }
 
@@ -72,6 +91,8 @@ public class PrincipalActivity extends AppCompatActivity {
             abrirTelaCadastroUsuario();
         } else if (id == R.id.action_sair_admin) {
             deslogarUsuario();
+        } else if (id == R.id.action_sair_atend) {
+
         }
 
         return super.onOptionsItemSelected(item);
